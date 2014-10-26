@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+key=`cat $1`
 function send {
     echo "-> $1"
     echo "$1" >> .botfile
@@ -9,8 +10,9 @@ mkfifo .botfile
 tail -f .botfile | openssl s_client -connect irc.cat.pdx.edu:6697 | while true ; do
     if [[ -z $started ]] ; then
         send "USER owlbot owlbot owlbot :owlbot"
-        send "NICK newowlbot"
-        send "JOIN #newowlbottest"
+        send "NICK owlbot"
+        send "JOIN #robots $key"
+        send "JOIN #hack $key"
         started="yes"
     fi
     read irc
