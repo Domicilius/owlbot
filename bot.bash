@@ -26,9 +26,9 @@ tail -f .botfile | openssl s_client -connect irc.cat.pdx.edu:6697 | while true ;
         nick="${irc%%!*}"; nick="${nick#:}"
         cmd=`echo $saying | cut -d ' ' -f 1`
         args="${saying#$cmd }"
-        if [[ $cmd == 'quit' && $nick == 'dom' ]] ; then
-            send "QUIT :Cya!"
-        fi
+#        if [[ $cmd == 'quit' && $nick == 'dom' ]] ; then
+ #           send "QUIT :Cya!"
+      #  fi
         var=$(echo $nick $chan $cmd $args $saying | ./commands.bash)
         if [[ ! -z $var ]] ; then
             send "$var"
