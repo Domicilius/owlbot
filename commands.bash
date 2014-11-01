@@ -12,6 +12,8 @@ elif `echo $saying | egrep '^[a-z]+: \bsomeone\b' | egrep -v '\bnamed\b' > /dev/
         echo "PRIVMSG $chan :$nick: \"someone?\" Could you be more specific?"
 elif `echo $saying | egrep '^[a-z]+: \bsomebody\b' | egrep -v '\bnamed\b' > /dev/null` ; then
         echo "PRIVMSG $chan :$nick: \"somebody?\" Could you be more specific?"
+elif `echo $saying | egrep 'owlbot: do you parse this?' > /dev/null` ; then
+        echo "PRIVMSG $chan :$nick: sure do, buddycakes"
 elif `echo $saying | grep 'owlbot: source' > /dev/null` ; then
         echo "PRIVMSG $chan :$nick: my source is located at https://github.com/Domicilius/owlbot and dom is my owner"
     fi
